@@ -3,7 +3,7 @@ import TextField, { Input } from "@material/react-text-field";
 
 import MaterialIcon from "@material/react-material-icon";
 import { Container, Search, Logo, Wrapper, Map, CarouselTitle, Carousel } from "./style";
-import { Card, RestaurantCard } from "../../components";
+import { Card, RestaurantCard, Modal } from "../../components";
 import logo from "../../assets/logo.svg";
 import izakaya from "../../assets/izakaya.jpeg"
 
@@ -11,6 +11,7 @@ import izakaya from "../../assets/izakaya.jpeg"
 const Home = () => {
   
   const [inputValue, setInputValue] = useState('');
+  const [modalOpened, setModalOpened] = useState(false);
   
   const settings = {
     dots: false,
@@ -43,10 +44,12 @@ const Home = () => {
             <Card photo={izakaya} title="nome restaurante" />
             <Card photo={izakaya} title="nome restaurante" />
           </Carousel>
+          <button type="button" onClick={() => setModalOpened(true)}>Open</button>
         </Search>
         <RestaurantCard />
       </Container>
       <Map />
+      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
     </Wrapper>
   );
 };
