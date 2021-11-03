@@ -7,7 +7,7 @@ import {
     RestaurantInfo,
     Title,
     Address,
-    RestaurantPhoto
+    RestaurantPhoto,
 } from "./style";
 
 const RestaurantCard = () => (
