@@ -1,13 +1,15 @@
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react";
-import { setRestaurants, setRestaurant } from "../../redux/modules/restaurants";
+import { setRestaurants } from "../../redux/modules/restaurants";
 
 export const MapContainer = (props) => {
     const [map, setMap] = useState(null);
     const { google, query } = props;
     const dispatch = useDispatch();
+
+    const { restaurants } = useSelector((state) => state.restaurants);
 
     useEffect(() => {
         if (query) {
@@ -27,7 +29,7 @@ export const MapContainer = (props) => {
         service.textSearch(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
                 console.log("restaurants: ", results);
-                dispatch(setRestaurant(results))
+                dispatch(setRestaurants(results))
             }
         });
     }
@@ -59,7 +61,16 @@ export const MapContainer = (props) => {
         onReady={onMapReady}
         onReCenter={onMapReady}
         >
-        <Marker />
+        {restaurants.map((restaurant) => (
+          <Marker
+            key={restaurant.place_id}
+            name={restaurant.name}
+            position={{
+                    lat: restaurant.geometry.location.lat(),
+                    lng: restaurant.geometry.location.lng(),
+                }}
+            />
+        ))}
       </Map>
 )
 };
