@@ -10,14 +10,17 @@ import {
     RestaurantPhoto,
 } from "./style";
 
-const RestaurantCard = () => (
+const RestaurantCard = ({ restaurant }) => (
   <Restaurant>
     <RestaurantInfo>
-      <Title>Nome</Title>
-      <ReactStars count={5} isHalf value={4} edit={false} />
-      <Address>Rua Corupá</Address>
+      <Title>{restaurant.name}</Title>
+      <ReactStars count={5} isHalf value={restaurant.rating} edit={false} />
+      <Address>{restaurant.vicinity || restaurant.formatted_address}</Address>
     </RestaurantInfo>
-    <RestaurantPhoto alt="" src={izakaya} />
+    <RestaurantPhoto
+      alt=""
+      src={restaurant.photos ? restaurant.photos[0].getUrl() : izakaya}
+    />
   </Restaurant>
   );
 

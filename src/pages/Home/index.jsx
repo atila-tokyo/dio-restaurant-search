@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TextField, { Input } from "@material/react-text-field";
-
+import { useSelector } from "react-redux";
 import MaterialIcon from "@material/react-material-icon";
 import { Container, Search, Logo, Wrapper, CarouselTitle, Carousel } from "./style";
 import { Card, RestaurantCard, Modal, Map } from "../../components";
@@ -13,7 +13,8 @@ const Home = () => {
   const [inputValue, setInputValue] = useState('');
   const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
-  
+  const { restaurants } = useSelector((state) => state.restaurants);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -45,15 +46,16 @@ const Home = () => {
           </TextField>
           <CarouselTitle> Near your location</CarouselTitle>
           <Carousel {...settings}>
-            <Card photo={izakaya} title="nome restaurante" />
-            <Card photo={izakaya} title="nome restaurante" />
-            <Card photo={izakaya} title="nome restaurante" />
-            <Card photo={izakaya} title="nome restaurante" />
-            <Card photo={izakaya} title="nome restaurante" />
+            {restaurants.map((restaurant) => (
+              <Card
+                key={restaurant.place_id}
+                photo={restaurant.photos ? restaurant.photos[0].getUrl() : izakaya}
+                title={restaurant.name} />
+            ))} 
           </Carousel>
           <button type="button" onClick={() => setModalOpened(true)}>Open</button>
         </Search>
-        <RestaurantCard />
+        {restaurants.map((restaurant) => <RestaurantCard restaurant={restaurant} />)}
       </Container>
       <Map query={query} />
       {/* <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} /> */}
