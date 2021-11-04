@@ -25,6 +25,7 @@ export const MapContainer = (props) => {
 
     const getRestaurantDetails = (placeId) => {
         const service = new google.maps.places.PlacesService(map);
+        dispatch(setRestaurant(null)); /* Cleaning loader cache */
         const request = {
             placeId,
             fields: ['name', 'opening_hours', 'formatted_address', 'formatted_phone_number'],
@@ -39,6 +40,7 @@ export const MapContainer = (props) => {
 
     const searchByQuery = (query) => {
         const service = new google.maps.places.PlacesService(map);
+        dispatch(setRestaurants([])); /* Cleaning loader cache */
         const request = {
             location: map.center,
             radius: "200",
@@ -48,13 +50,13 @@ export const MapContainer = (props) => {
 
         service.textSearch(request, (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                console.log("restaurants: ", results);
                 dispatch(setRestaurants(results))
             }
         });
     }
     const searchNearBy = (map, center) => {
         const service = new google.maps.places.PlacesService(map);
+        dispatch(setRestaurants([])); /* Cleaning loader cache */
         const request = {
             location: center,
             radius: "20000",

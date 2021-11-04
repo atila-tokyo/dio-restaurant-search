@@ -16,7 +16,8 @@ import {
   Card,
   RestaurantCard,
   Modal,
-  Map
+  Map,
+  Lottie
 } from "../../components";
 import logo from "../../assets/logo.svg";
 import izakaya from "../../assets/izakaya.jpeg"
@@ -65,15 +66,22 @@ const Home = () => {
           >
             <Input value={inputValue} onKeyPress={handleKeyPress} onChange={(e) => setInputValue(e.target.value)} />
           </TextField>
-          <CarouselTitle> Near your location</CarouselTitle>
-          <Carousel {...settings}>
-            {restaurants.map((restaurant) => (
-              <Card
-                key={restaurant.place_id}
-                photo={restaurant.photos ? restaurant.photos[0].getUrl() : izakaya}
-                title={restaurant.name} />
-            ))} 
-          </Carousel>
+          {restaurants.length > 0 ? (
+            <>
+              <CarouselTitle> Near your location</CarouselTitle>
+              <Carousel {...settings}>
+                {restaurants.map((restaurant) => (
+                  <Card
+                    key={restaurant.place_id}
+                    photo={restaurant.photos ? restaurant.photos[0].getUrl() : izakaya}
+                    title={restaurant.name}
+                />
+              ))} 
+              </Carousel>
+            </>
+          ) : (
+            <Lottie /> 
+          )}
         </Search>
         {restaurants.map((restaurant) => (
           <RestaurantCard
