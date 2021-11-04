@@ -14,6 +14,7 @@ const Modal = ({ children, open, onClose }) => {
             window.removeEventListener("keydown", onEsc);
         }
     }, [onClose]);
+  
     if (!open) return null;
 
     const onOverlayClick = () => {

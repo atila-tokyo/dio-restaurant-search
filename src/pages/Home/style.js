@@ -35,7 +35,7 @@ export const Carousel = styled(Slider)`
         display: flex;
     }
     .slick-slide {
-        margin-right: 10px;
+        margin-right: 15px;
     }
 `;
 
@@ -48,3 +48,20 @@ export const CarouselTitle = styled.h1`
     margin-top: 10px;
 `;
 
+export const ModalTitle = styled.p`
+    margin-bottom: 10px;
+    letter-spacing: 0.1px;
+    font-family: ${(props) => props.theme.fonts.regular};
+    color: ${(props) => props.theme.colors.text};
+    line-height 30px;
+    font-size: 24px;
+    font-weight: bold;
+`;
+
+export const ModalContent = styled.p`
+    margin-bottom: 10px;
+    font-family: ${(props) => props.theme.fonts.regular};
+    line-height 20px;
+    font-size: 16px;
+    font-weight: normal;   
+`;
