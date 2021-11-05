@@ -33,6 +33,9 @@ export const Map = styled.div`
 export const Carousel = styled(Slider)`
     .slick-track {
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
     }
     .slick-slide {
         margin-right: 15px;

@@ -41,6 +41,7 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    adaptativeHeight: true,
   };
   
   const handleKeyPress = (e) => {

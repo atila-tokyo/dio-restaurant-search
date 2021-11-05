@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import styled from "styled-components"
+import Skeleton from "../Skeleton";
+
 
 const Card = styled.div`
     display: flex;
     justify-content: center;
     width: 90px;
-    height: 90px;border-radius 3px;
+    height: 90px;
+    border-radius 3px;
     background-image: url(${(props) => props.photo});
     background-size: cover;
     margin-top: 5px;
@@ -18,10 +21,24 @@ const Title = styled.p`
 `;
 
 const ImageCard = ({ photo, title }) => {
+  const [loadedImage, setLoadedImage] = useState(false);
+
+  useEffect(() => {
+    const loader = new Image();
+    loader.src = photo;
+    loader.onload = () => setLoadedImage(true)
+  }, [photo])
+  
   return (
-    <Card photo={photo}>
-      <Title>{title}</Title>
-    </Card>
+    <>
+      {loadedImage ? (
+        <Card photo={photo}>
+          <Title>{title}</Title>
+        </Card>
+      ) : (
+        <Skeleton width="90px" height="90px" />
+      )}
+    </>
   )
 
 }
