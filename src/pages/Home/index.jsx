@@ -17,7 +17,8 @@ import {
   RestaurantCard,
   Modal,
   Map,
-  Lottie
+  Lottie,
+  Skeleton
 } from "../../components";
 import logo from "../../assets/logo.svg";
 import izakaya from "../../assets/izakaya.jpeg"
@@ -91,10 +92,24 @@ const Home = () => {
       </Container>
       <Map query={query} placeId={placeId} />
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
-        <ModalTitle>{restaurantSelected?.name}</ModalTitle>
-        <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
-        <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
-        <ModalContent>{restaurantSelected?.opening_hours?.isOpen() ? "We're open now" : "Closed now"}</ModalContent>
+        {restaurantSelected ? (
+          <>
+            <ModalTitle>{restaurantSelected?.name}</ModalTitle>
+            <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
+            <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
+            <ModalContent>{restaurantSelected?.opening_hours?.isOpen()
+              ? "We're open now"
+              : "Closed now"}
+            </ModalContent>
+          </>
+        ) : (
+          <>
+            <Skeleton width="10px" height="10px" />
+            <Skeleton width="10px" height="10px" />
+            <Skeleton width="10px" height="10px" />
+          </>
+          
+        )}
       </Modal>
     </Wrapper>
   );

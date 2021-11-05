@@ -17,10 +17,15 @@ const Title = styled.p`
     front-size: 10px;
 `;
 
-const ImageCard = ({ photo, title }) => (
-  <Card photo={photo}>
-    <Title>{title}</Title>
-  </Card>
-  );
+const ImageCard = ({ photo, title }) => {
+  return (
+    <Card photo={photo}>
+      <Title>{title}</Title>
+    </Card>
+  )
+
+}
+
+  
 
 export default ImageCard;
