@@ -1,3 +1,25 @@
+<h1 align="center">Restaurant Search using ReactJS</h1>
+
+<p> This project is a mandatory part of the Impulso React Developer Bootcamp provided by Digital Innovation One</p>
+<h3>Tecnologies used:</h3>
+<ul>
+  <li>HTML</li>
+  <li>Styled Components</li>
+  <li>Material-UI</li>
+  <li>Jest-DOM</li>
+  <li>Google Maps React</li>
+  <li>React Redux</li>
+  <li>React Lottie</li>
+  <li>React Rating Stars Component</li>
+  <li>Slick Carousel</li>
+  <li>Javascript</li>
+</ul>
+<h3><a href="https://impulsoreact-restaurantsearch.netlify.app">Deployed on Netlify</a><h3>
+
+<code>![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)</code> &nbsp;&nbsp;
+ 
+<br></br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
