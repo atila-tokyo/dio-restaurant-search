@@ -8,7 +8,8 @@
   <li>Material-UI</li>
   <li>Jest-DOM</li>
   <li>Google Maps React</li>
-  <li>React Redux</li>
+  <li>React JS</li>
+  <li>Redux</li>
   <li>React Lottie</li>
   <li>React Rating Stars Component</li>
   <li>Slick Carousel</li>
