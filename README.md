@@ -1,5 +1,7 @@
 <h1 align="center">Restaurant Search using ReactJS</h1>
 
+![](restaurant-search.gif)
+
 <p> This project is a mandatory part of the Impulso React Developer Bootcamp provided by Digital Innovation One</p>
 <h3>Tecnologies used:</h3>
 <ul>
